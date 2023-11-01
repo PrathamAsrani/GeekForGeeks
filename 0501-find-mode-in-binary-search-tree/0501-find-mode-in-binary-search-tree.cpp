@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    void inOrder(TreeNode* root, map<int, int> &mpp){
+    void inOrder(TreeNode* root,unordered_map<int, int> &mpp){
         if(root){
             inOrder(root->left, mpp);
             mpp[root->val]++;
@@ -19,7 +19,7 @@ public:
         }
     }
     vector<int> findMode(TreeNode* root) {
-        map<int, int> mpp;
+        unordered_map<int, int> mpp;
         vector<int> ans;
         inOrder(root, mpp);
         int mx = 0;
