@@ -18,12 +18,11 @@ class Solution{
                 R--;
             }else{
                 N = (N*N)%m;
-                R = R/2;
+                R >>= 1;
             }
         }
         return ans;
     }
-
 };
 
 //{ Driver Code Starts.
