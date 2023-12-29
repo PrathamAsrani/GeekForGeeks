@@ -17,49 +17,37 @@ class Solution
     int celebrity(vector<vector<int>>& M, int n) 
     {
         if(n == 1 && M[0][0] == 0) return 0;
-	   // stack<int> st;
-	   // for(int i = 0; i < n; i++) st.push(i);
-	   // int i = 0;
-	   // while(i++ < n-1){
-	   // 	int first = st.top();
-	   // 	st.pop();
-	   // 	int second = st.top();
-	   // 	st.pop();
-	   // 	if(knows(M, first, second)) st.push(second);
-	   // 	else st.push(first);
-	   // }
-	   // return st.top();
-	   bool flag = false;
-	   for(int i = 0; i < n; i++) {
-	       for(int j = 0; j < n; j++){
-	           if(M[i][j]) {
-	               flag = true;
-	               break;
-	           }
-	       }
-	   }
-	   int cele = -1;
-	   if(flag){
-	    for(int i = 0; i < n; i++){
-	        bool isCele = true;
+	    bool flag = false;
+	    for(int i = 0; i < n; i++) {
 	        for(int j = 0; j < n; j++){
-	            if(i!=j && knows(M, i, j)) {
-	                isCele = false;
+	            if(M[i][j]) {
+	                flag = true;
 	                break;
 	            }
 	        }
-	        if(isCele) {
-	            cele = i;
-	            break;
-	        }
 	    }
-	    if(cele != -1){
+	    int cele = -1;
+	    if(flag){
 	        for(int i = 0; i < n; i++){
-	            if(i != cele && M[i][cele] == false) return -1;
+	            bool isCele = true;
+	            for(int j = 0; j < n; j++){
+	                if(i!=j && knows(M, i, j)) {
+	                    isCele = false;
+	                    break;
+	                }
+	            }
+	            if(isCele) {
+	                cele = i;
+	                break;
+	            }
+	        }
+	        if(cele != -1){
+	            for(int i = 0; i < n; i++){
+	                if(i != cele && M[i][cele] == false) return -1;
+	            }
 	        }
 	    }
-	   }
-	   return cele;
+	    return cele;
     }
 };
 
