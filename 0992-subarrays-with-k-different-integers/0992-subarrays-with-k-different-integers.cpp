@@ -18,7 +18,33 @@ public:
         return ans;
     }
     
-    int subarraysWithKDistinct(vector<int>& nums, int k) {
-        return subarraysWithAtmostKDistinct(nums, k) - subarraysWithAtmostKDistinct(nums, k-1);
+    int subarraysWithKDistinct(vector<int>& arr, int k) {
+        // O(2n)
+        // return subarraysWithAtmostKDistinct(arr, k) - subarraysWithAtmostKDistinct(arr, k-1);
+        
+        // O(n)
+        int s = 0, e = 0, prefix = 0, cnt = 0, n = arr.size();
+        int ans = 0;
+        unordered_map<int, int> umpp;
+        while(e < n){
+            umpp[arr[e]]++;
+            if(umpp[arr[e]] == 1)
+                cnt++;
+            if(cnt > k){
+                cnt--;
+                prefix = 0;
+                umpp[arr[s]]--;
+                s++;
+            }
+            while(umpp[arr[s]] > 1){
+                umpp[arr[s]]--;
+                s++;
+                prefix++;
+            }
+            if(cnt == k) 
+                ans += prefix+1;
+            e++;
+        }
+        return ans;
     }
 };
