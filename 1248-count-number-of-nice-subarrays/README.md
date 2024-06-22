@@ -14,7 +14,7 @@
 
 <pre><strong>Input:</strong> nums = [2,4,6], k = 1
 <strong>Output:</strong> 0
-<strong>Explanation:</strong> There is no odd numbers in the array.
+<strong>Explanation:</strong> There are no odd numbers in the array.
 </pre>
 
 <p><strong class="example">Example 3:</strong></p>
@@ -30,4 +30,5 @@
 	<li><code>1 &lt;= nums.length &lt;= 50000</code></li>
 	<li><code>1 &lt;= nums[i] &lt;= 10^5</code></li>
 	<li><code>1 &lt;= k &lt;= nums.length</code></li>
-</ul></div>
+</ul>
+</div>
